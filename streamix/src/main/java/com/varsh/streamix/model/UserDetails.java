@@ -4,20 +4,26 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.Setter;
-
-import java.util.List;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Season {
-	private String id ;
-	private String description;
-	private List<Episode> episodeList;
-	private Long duration;
-	private int seasonNumber;
-	
+public class UserDetails {
+	private String id;
+
+	@NonNull
+	private String userName;
+
+	@NonNull
+	private String userEmailId;
+
+	@NonNull
+	private String userPassword;
+
+	@NonNull
+	private Long userPhoneNo;
 }

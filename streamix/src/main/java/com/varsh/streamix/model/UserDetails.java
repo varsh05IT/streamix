@@ -1,18 +1,25 @@
 package com.varsh.streamix.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.Setter;
+import lombok.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
 
-@Getter
-@Setter
+
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Entity 
+@Table(name="users")
 public class UserDetails {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "user_seq")
+	@SequenceGenerator(name="user_seq", sequenceName = "USER_SEQ", allocationSize = 1)
 	private String id;
 
 	@NonNull
@@ -26,4 +33,6 @@ public class UserDetails {
 
 	@NonNull
 	private Long userPhoneNo;
+
+	
 }

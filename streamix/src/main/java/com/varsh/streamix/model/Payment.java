@@ -1,19 +1,33 @@
 package com.varsh.streamix.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Getter
-@Setter
+@Entity
+@Table(name="payment")
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 public class Payment {
-	private Long id; 
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "payment_seq")
+	@SequenceGenerator(name="payment_seq", sequenceName = "PAYMENT_SEQ", allocationSize = 1)
+	private String id; 
 	private String paymentMethod; 
 	private double amount;
-	private UserDetails userDetails;
+	
+	@ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+	private UserDetails userDetails; 
 }

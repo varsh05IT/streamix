@@ -24,4 +24,11 @@ public class UserController{
         String result = userService.addNewUser(userDetails);
         return ResponseEntity.status(HttpStatus.CREATED).body(result);
     }
+    
+    @PostMapping("/login")
+    public ResponseEntity<String> login(@RequestBody UserDetails userDetails) {
+        String result = userService.login(userDetails);
+        return result.equals("Login successful") ? ResponseEntity.ok(result) : ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(result);
+        
+    }
 }

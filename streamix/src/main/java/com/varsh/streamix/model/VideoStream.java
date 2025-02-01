@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+import io.micrometer.common.lang.NonNull;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -22,21 +23,27 @@ import jakarta.persistence.Table;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
+//@Builder
 @Entity
 @Table(name="video_stream")
 public class VideoStream {
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "payment_seq")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "video_stream_seq")
 	@SequenceGenerator(name="video_stream_seq", sequenceName = "VIDEO_STREAM_SEQ", allocationSize = 1)
 	private Long id;
 	private String title;
 	private String description;
-	private String director;
+	private String directorName;
+	
+	@NonNull
 	private Long duration;
+	
 	private Long createdAt;
 	
-	@OneToMany(mappedBy="season",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@NonNull
+	private int IMDBRating;
+	
+	@OneToMany(mappedBy="videoStream",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Season> seasonList;
 	
 	@Enumerated(EnumType.STRING)

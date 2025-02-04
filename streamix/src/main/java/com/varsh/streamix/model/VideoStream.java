@@ -43,6 +43,9 @@ public class VideoStream {
 	@NonNull
 	private int IMDBRating;
 	
+	@NonNull
+	private String videoLink;
+	
 	@OneToMany(mappedBy="videoStream",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Season> seasonList;
 	

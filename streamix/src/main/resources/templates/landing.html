@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Streamix</title>
+    <link rel="stylesheet" th:href="@{/css/landing.css}">
+</head>
+<body>
+    <nav>
+        <a th:href="@{/landing}">Home</a>
+        <a th:href="@{/search}">Search</a>
+        <a th:href="@{/play}">Play Movie</a>
+        <a th:href="@{/profile}">Profile</a>
+        <a th:href="@{/login}">Login</a>
+        <a th:href="@{/signup}">Sign Up</a>
+        <a th:href="@{/logout}">Logout</a>
+    </nav>
+    <div class="container">
+        <h1>Streamix</h1>
+        
+        <h2>Top 5 Movies</h2>
+        <ul>
+            <li th:each="video : ${top5Movies}">
+                <span th:text="${video.title}">Title</span> - <span th:text="${video.IMDBRating}">Rating</span>
+            </li>
+        </ul>
+        <h2>Top 5 Series</h2>
+        <ul>
+            <li th:each="video : ${top5Series}">
+                <span th:text="${video.title}">Title</span> - <span th:text="${video.IMDBRating}">Rating</span>
+            </li>
+        </ul>
+        <a th:href="@{/profile}" class="cta-button">My Profile</a>
+        <a th:href="@{/logout}" class="cta-button">Logout</a>
+    
+        <p>Experience entertainment like never before. Enjoy a vast library of movies and TV shows, all in stunning quality. Start your free trial today!</p>
+        <a th:href="@{/trial}" class="cta-button">Start Free Trial</a>
+
+        <div class="sample-area">
+           <video width="640" height="360" controls>
+               <source th:src="@{/video/placeholder-video.mp4}" type="video/mp4">
+               Your browser does not support the video tag.
+           </video>
+        </div>
+    </div>
+    <footer>
+        &copy; 2023 Streamix. All rights reserved.
+    </footer>
+</body>
+</html>

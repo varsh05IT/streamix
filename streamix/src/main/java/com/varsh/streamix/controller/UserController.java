@@ -2,33 +2,66 @@ package com.varsh.streamix.controller;
 
 import com.varsh.streamix.model.UserDetails;
 import com.varsh.streamix.service.UserServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.Model;
+
+@Controller
 @RequestMapping("/user")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UserController{
 
     @Autowired
     private UserServiceImpl userService;
+    
+    @GetMapping("/login")
+    public String loginPage() {
+        return "login";
+    }
+
+    @GetMapping("/signup")
+    public String signupPage() {
+        return "signup";
+    }
 
     @PostMapping("/register")
-    public ResponseEntity<String> addNewUser(@RequestBody UserDetails userDetails) {
+    public String addNewUser(@ModelAttribute UserDetails userDetails, Model model) {
         String result = userService.addNewUser(userDetails);
-        return ResponseEntity.status(HttpStatus.CREATED).body(result);
+        model.addAttribute("message", result);
+        return result.equals("User registered successfully") ? "redirect:/user/login" : "signup"; 
     }
     
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody UserDetails userDetails) {
+    public String login(@ModelAttribute UserDetails userDetails, HttpServletRequest request, Model model) {
         String result = userService.login(userDetails);
-        return result.equals("Login successful") ? ResponseEntity.ok(result) : ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(result);
-        
+        if (result.equals("Login successful")) {
+            HttpSession session = request.getSession(true);
+            session.setAttribute("user", userDetails);
+            return "redirect:/video"; 
+        } else {
+            model.addAttribute("message", result);
+            return "login";
+        }
     }
+    
+    @GetMapping("/logout")
+    String logout(HttpSession httpSession, Model model) {
+        if (httpSession != null) {
+            httpSession.invalidate();
+            model.addAttribute("message", "Logged out successfully");
+            return "login";
+        }
+        model.addAttribute("message", "No session found");
+        return "login";
+    }
+    
 }

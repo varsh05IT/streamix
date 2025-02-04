@@ -39,6 +39,9 @@ public class UserDetails {
 	@NonNull
 	private Long userPhoneNo;
 	
+//	@NonNull
+    private String role; 
+	
 	@OneToMany(mappedBy="user", cascade = CascadeType.ALL)
 	private List<PlayBackStatus> playBackStatuses;
 

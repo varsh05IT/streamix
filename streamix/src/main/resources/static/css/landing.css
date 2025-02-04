@@ -1,0 +1,71 @@
+/* style.css */
+body {
+    background-color: black;
+    color: #0f0; /* Green text */
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh; /* Ensure full viewport height */
+}
+
+.container {
+    width: 80%;
+    max-width: 960px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    text-align: center;  /* Center the title */
+}
+
+p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    text-align: center; /* Center the description */
+}
+
+.cta-button {
+    display: block; /* Make button a block element */
+    width: fit-content; /* Adjust width to content */
+    margin: 0 auto; /* Center the button */
+    padding: 15px 30px;
+    background-color: #0f0; /* Green background */
+    color: black; /* Black text on green */
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.cta-button:hover {
+    background-color: #0c0; /* Darker green on hover */
+}
+
+/* Styling for the sample video/image area */
+.sample-area {
+    width: 100%;
+    margin-top: 30px;
+    text-align: center; /* Center content */
+}
+.sample-area img, .sample-area video {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.2); /* Subtle green glow */
+}
+
+footer {
+    margin-top: auto; /* Push footer to bottom */
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+    background-color: #111; /* Darker background for footer */
+    color: #0f0;
+}

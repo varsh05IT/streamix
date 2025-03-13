@@ -1,0 +1,102 @@
+body {
+            background-color: #000; /* Black background */
+            color: #fff; /* White text */
+        }
+
+        .navbar {
+            background-color: #111; /* Darker navbar background */
+        }
+
+        .navbar-brand img {
+            max-height: 80px;
+            width: auto;
+        }
+
+        .nav-link {
+            color: #eee !important; /* Off-white navbar links */
+        }
+
+        .nav-link:hover {
+            color: #fff !important; /* White on hover */
+        }
+
+        .hero {
+            background-image: url('/images/hero-image.jpg'); /* Replace with your hero image */
+            background-size: cover;
+            background-position: center;
+            height: 500px; /* Adjust as needed */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #28a745; /* Green title */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Add a text shadow */
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-danger {
+            background-color: #28a745 !important; /* Green button */
+            border-color: #28a745 !important;
+            color: #fff !important;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-danger:hover {
+            background-color: #1e7e34 !important; /* Darker green on hover */
+            border-color: #1e7e34 !important;
+            color: #fff !important;
+        }
+
+        footer {
+            background-color: #111;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer a {
+            color: #eee;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        /* Animations */
+        .animate-fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .animate-slide-up {
+            animation: slideUp 1s ease-in-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }

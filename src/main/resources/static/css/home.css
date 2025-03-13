@@ -1,0 +1,258 @@
+body {
+    background-color: #141414;
+    color: white;
+}
+
+.featured-video {
+  position: relative;
+  width: 100%;
+}
+
+.featured-video video {
+  width: 100%;
+  display: block; 
+
+}
+
+.video-details {
+  position: absolute;
+  bottom: 350px;
+  left: 80px;
+  color: white;
+  padding: 10px;
+}
+
+.movie-section {
+    padding: 20px;
+}
+
+.movie-title {
+    margin-bottom: 20px;
+}
+
+.movie-list {
+    display: flex;
+    overflow-x: auto; 
+}
+
+.movie-card {
+    margin-right: 10px;
+}
+
+.movie-card img {
+    width: 200px; 
+    height: auto;
+    cursor: pointer; 
+}
+
+.navbar {
+    background-color: #141414;
+    padding: 20px;
+}
+
+.navbar-brand img {
+    height: 40px;
+}
+
+.nav-link {
+    color: white !important;
+    margin-left: 20px;
+}
+
+.hero {
+    background-image: url('hero-image.jpg'); 
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.btn-danger {
+    background-color: #7bdc0f;
+    border-color: #7bdc0f;
+    color : black;
+}
+
+.movie-section {
+    padding: 40px;
+}
+
+.movie-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.movie-list {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.movie-card {
+    display: inline-block;
+    width: 200px;
+    margin-right: 10px;
+}
+
+.movie-card img {
+    width: 100%;
+    height: auto;
+}
+
+footer {
+    background-color: #141414;
+    padding: 20px;
+    text-align: center;
+    color: #737373;
+}
+
+footer a {
+    color: #737373;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+body {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .navbar {
+            background-color: #111;
+        }
+
+        .navbar-brand img {
+            max-height: 80px;
+            width: auto;
+        }
+
+        .nav-link {
+            color: #eee !important;
+        }
+
+        .nav-link:hover {
+            color: #fff !important;
+        }
+
+
+
+        .featured-video:hover .video-details {
+            transform: translateY(0); /* Show on hover */
+        }
+        .movie-title-style{
+            font-size: 2rem;
+        }
+
+        .video-info {
+            font-size: 1.2rem;
+        }
+
+        .video-actions {
+            margin-top: 10px;
+        }
+
+        .movie-section {
+            padding: 40px;
+        }
+
+        .movie-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .movie-list {
+            display: flex;
+            overflow-x: auto; /* Horizontal scrolling */
+            padding-bottom: 20px; /* Space for scrollbar */
+        }
+
+        .movie-card {
+            margin-right: 20px;
+            flex-shrink: 0; /* Prevent cards from shrinking */
+            width: 200px; /* Or a suitable width */
+            overflow: hidden; /* Hide overflowing image */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+            transition: transform 0.2s; /* Smooth scaling */
+            cursor: pointer; /* Indicate clickability */
+        }
+        .movie-card:hover{
+            transform: scale(1.05);
+        }
+
+        .thumbnail {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px 8px 0 0; /* Rounded top corners */
+        }
+
+        .modal-content {
+            background-color: #111;
+        }
+
+        .modal-header {
+            border-bottom: 1px solid #333;
+        }
+
+        .modal-body img {
+            border-radius: 8px;
+        }
+
+        .modal-footer {
+            border-top: 1px solid #333;
+            display: flex;
+            justify-content: center; /* Center the Play button */
+        }
+
+
+        /* Animations */
+        .animate-fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .animate-slide-up {
+            animation: slideUp 1s ease-in-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }

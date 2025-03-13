@@ -1,0 +1,69 @@
+
+body {
+    background-color: black; 
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    min-height: 100vh; 
+    margin: 0; 
+}
+
+.container {
+    margin-top: 0; 
+}
+
+.card {
+	background-color: #393b37; 
+    color: white; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+.card-header {
+    background-color: #393b37; 
+    border-bottom: 1px solid #393b37; 
+    border-bottom: 1px solid #393b37; 
+    color:white;
+    padding: 20px;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.form-label {
+    font-weight: 500; 
+}
+
+.btn-primary {
+    background-color: #7bdc0f; 
+    border-color: #7bdc0f;
+    color: black;
+}
+
+.btn-primary:hover {
+    background-color: #0069d9; 
+    border-color: #0062cc;
+}
+
+.alert {
+    margin-bottom: 15px;
+}
+
+.card-header h3 { /* Target the <h3> inside the card-header */
+    color: #7bdc0f; /* Green color */
+}
+
+.card-body a { /* Target the <a> tag (Register link) */
+    color: #7bdc0f; /* Green color */
+}
+
+.card-body a:hover{
+    color: #5aa708;
+}
+
+/* Optional: If you want the "Don't have an account?" text to be a different color: */
+.card-body .mt-3.text-center {
+    color: white; /* Or any other color you prefer */
+}
+
+

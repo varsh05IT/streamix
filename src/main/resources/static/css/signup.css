@@ -1,0 +1,66 @@
+/* login.css */
+body {
+    background-color: black; /* Light background color */
+    display: flex;
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    min-height: 100vh; /* Ensure full viewport height */
+    margin: 0; /* Remove default margins */
+}
+
+.container {
+    margin-top: 0; /* Reset default container margin */
+}
+
+.card {
+	background-color: #393b37; 
+    color: white; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+.card-header {
+    background-color: #393b37;
+    border-bottom: 1px solid #393b37; 
+    border-bottom: 1px solid #393b37; 
+    color:white;
+    padding: 20px;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.form-label {
+    font-weight: 500; 
+}
+
+.btn-primary {
+    background-color: #7bdc0f; 
+    border-color: #7bdc0f;
+    color: black;
+}
+
+.btn-primary:hover {
+    background-color: #0069d9; 
+    border-color: #0062cc;
+}
+
+.alert {
+    margin-bottom: 15px;
+}
+
+.card-header h3 { 
+    color: #7bdc0f;
+}
+
+.card-body a { 
+    color: #7bdc0f; 
+}
+
+.card-body a:hover{
+    color: #5aa708;
+}
+
+.card-body .mt-3.text-center {
+    color: white; 
+}

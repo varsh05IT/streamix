@@ -1,228 +1,194 @@
 <!DOCTYPE html>
 
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
 
-<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <meta charset="UTF-8" />
+        <title>Manage Streams - Streamix</title>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+        <style>
+            body {
+                background-color: #000;
+                color: #fff;
+            }
 
-  <title>Manage Streams - Streamix</title>
+            .navbar {
+                background-color: #111; 
+            }
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+            .navbar-brand img {
+                max-height: 80px; 
+            }
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-      <style>
-        body {
-            background-color: #000;
-            color: #fff;
-        }
+            .nav-link {
+                color: #eee !important; 
+            }
 
-      .navbar {
-            background-color: #111; /* Slightly lighter black for navbar */
-        }
+            .nav-link:hover {
+                color: #fff !important;
+            }
 
-      .navbar-brand img {
-            max-height: 80px; /* Adjust logo height as needed */
-        }
+            .container {
+                max-width: 1200px; 
+            }
 
-      .nav-link {
-            color: #eee!important; /* Off-white for nav links */
-        }
+            .table {
+                background-color: #222; 
+                color: #fff;
+            }
 
-      .nav-link:hover {
-            color: #fff!important;
-        }
+            .table-dark th {
+                background-color: #333; 
+                color: #fff;
+            }
 
-      .container {
-            max-width: 1200px; /* Limit container width for larger screens */
-        }
+            .table-bordered {
+                border-color: #444; 
+            }
 
-      .table {
-            background-color: #222; /* Darker background for table */
-            color: #fff;
-        }
+            .btn-warning {
+                background-color: #ffc107; 
+                border-color: #ffc107;
+            }
 
-      .table-dark th {
-            background-color: #333; /* Even darker for table headers */
-            color: #fff;
-        }
+            .btn-danger {
+                background-color: #dc3545; 
+                border-color: #dc3545;
+            }
 
-      .table-bordered {
-            border-color: #444; /* Darker border for table */
-        }
+            .btn-primary {
+                background-color: #28a745 !important; 
+                border-color: #28a745 !important;
+            }
+            .btn-primary:hover {
+                background-color: #1e7e34 !important; 
+                border-color: #1e7e34 !important;
+            }
 
-      .btn-warning {
-            background-color: #ffc107; /* Keep default warning color */
-            border-color: #ffc107;
-        }
+            .nav-tabs.nav-link.active {
+                background-color: #333;
+                color: #fff;
+                border-color: #333 #333 #000; 
+            }
 
-      .btn-danger {
-            background-color: #dc3545; /* Keep default danger color */
-            border-color: #dc3545;
-        }
+            .nav-tabs.nav-link {
+                color: #aaa;
+                background-color: #111; 
+                border: 1px solid #333; 
+            }
 
-      .btn-primary {
-            background-color: #28a745!important; /* Green */
-            border-color: #28a745!important;
-        }
-      .btn-primary:hover{
-            background-color: #1e7e34!important; /* Darker green on hover */
-            border-color: #1e7e34!important;
-        }
+            .card {
+                background-color: #222;
+                color: #fff;
+                border: 1px solid #444;
+            }
 
-      .nav-tabs.nav-link.active {
-            background-color: #333;
-            color: #fff;
-            border-color: #333 #333 #000; /* Match tab border to background */
-        }
+            .card-header {
+                background-color: #333;
+                border-bottom: 1px solid #444;
+            }
 
-      .nav-tabs.nav-link {
-            color: #aaa; /* Slightly lighter text for inactive tabs */
-            background-color: #111; /* Match tab background to page */
-            border: 1px solid #333; /* Slightly darker border for tabs */
-        }
+            .form-control {
+                background-color: #333;
+                color: #fff;
+                border: 1px solid #444;
+            }
 
-      .card {
-            background-color: #222;
-            color: #fff;
-            border: 1px solid #444;
-        }
+            .form-label {
+                color: #aaa;
+            }
 
-      .card-header {
-            background-color: #333;
-            border-bottom: 1px solid #444;
-        }
+            footer {
+                background-color: #111;
+            }
+            .modal-content {
+                background-color: #222;
+                color: #fff;
+                border: 1px solid #444;
+            }
+            .modal-header {
+                background-color: #333;
+                border-bottom: 1px solid #444;
+            }
+            .modal-body {
+                background-color: #222;
+            }
+            
+            .text-primary {
+                font-family: "Arial Black", sans-serif; 
+                color: #28a745 !important; 
+            }
+            .table {
+                background-color: #1a1a1a; 
+                color: #eee;
+            }
 
-      .form-control {
-            background-color: #333;
-            color: #fff;
-            border: 1px solid #444;
-        }
+            .table-dark th {
+                background-color: #282828; 
+                color: #fff;
+                border-color: #333;
+            }
 
-      .form-label {
-            color: #aaa;
-        }
+            .table-bordered {
+                border-color: #333; 
+            }
 
-        footer {
-            background-color: #111;
-        }
-      .modal-content{
-            background-color: #222;
-            color: #fff;
-            border: 1px solid #444;
-        }
-      .modal-header{
-             background-color: #333;
-             border-bottom: 1px solid #444;
-        }
-       .modal-body{
-             background-color: #222;
-        }
-        /* Change heading font and color */
-      .text-primary {
-            font-family: 'Arial Black', sans-serif; /* Example font */
-            color: #28a745!important; /* Green color */
-        }
-        .table {
-            background-color: #1a1a1a; /* Slightly lighter black for table background */
-            color: #eee; /* Off-white text for better contrast */
-        }
+            .table-striped tbody tr:nth-of-type(even) {
+                background-color: #222; 
+            }
 
-        .table-dark th {
-            background-color: #282828; /* Darker shade for header background */
-            color: #fff;
-            border-color: #333; /* Darker border for table headers */
-        }
+            .table-hover tbody tr:hover {
+                background-color: #2c2c2c; 
+            }
 
-        .table-bordered {
-            border-color: #333; /* Darker border for table */
-        }
+            .table td {
+                border-color: #333; 
+            }
+            
+            .table th,
+            .table td {
+                padding: 1rem; 
+            }
+        </style>
+    </head>
 
-        .table-striped tbody tr:nth-of-type(even) {
-            background-color: #222; /* Slightly darker background for even rows */
-        }
+    <body>
 
-        .table-hover tbody tr:hover {
-            background-color: #2c2c2c; /* Hover effect background */
-        }
+        <nav class="navbar navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img th:src="@{/images/logo-transparent.png}" alt="Streamix Logo" height="100" width="200" />
+                </a>
 
-        /* Style the table cells (td) */
-        .table td {
-            border-color: #333; /* Darker border for table cells */
-        }
-        /* Style the table cells (td) */
-        .table th, .table td{
-            padding: 1rem; /* Add padding to table cells */
-        }
-        
-    </style>
+                <ul class="nav">
+                    <li class="nav-item"><a class="nav-link text-white" th:href="@{/admin/}">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" th:href="@{/stream/tvshows}">TV Shows</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" th:href="@{/stream/movies}">Movies</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" th:href="@{/admin/manageUsers}">Manage Users</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" th:href="@{/user/logout}">Logout</a></li>
+                </ul>
+            </div>
+        </nav>
 
-</head>
+        <div class="container my-5">
+            <h2 class="text-center text-primary">Manage Streams</h2>
 
-<body>
+            <!-- Success/Error Messages -->
+            <div th:if="${message}" class="alert alert-success text-center">
+                <span th:text="${message}"></span>
+            </div>
 
-  <!-- Navbar remains the same -->
+            <div th:if="${param.error}" class="alert alert-danger text-center">
+                <span>An error occurred during upload. Please try again.</span>
+            </div>
 
-  <nav class="navbar navbar-dark bg-dark">
-
-    <div class="container">
-
-      <a class="navbar-brand" href="#">
-
-        <img th:src="@{/images/logo-transparent.png}" alt="Streamix Logo" height="100" width="200" />
-
-      </a>
-
-      <ul class="nav">
-
-        <li class="nav-item"><a class="nav-link text-white" th:href="@{/admin/}">Dashboard</a></li>
-
-        <li class="nav-item"><a class="nav-link text-white" th:href="@{/stream/tvshows}">TV Shows</a></li>
-
-        <li class="nav-item"><a class="nav-link text-white" th:href="@{/stream/movies}">Movies</a></li>
-
-        <li class="nav-item"><a class="nav-link text-white" th:href="@{/admin/manageUsers}">Manage Users</a></li>
-
-        <li class="nav-item"><a class="nav-link text-white" th:href="@{/user/logout}">Logout</a></li>
-
-      </ul>
-
-    </div>
-
-  </nav>
-
-
-
-  <div class="container my-5">
-
-    <h2 class="text-center text-primary">Manage Streams</h2>
-
-     
-
-    <!-- Success/Error Messages -->
-
-    <div th:if="${message}" class="alert alert-success text-center">
-
-      <span th:text="${message}"></span>
-
-    </div>
-
-    <div th:if="${param.error}" class="alert alert-danger text-center">
-
-      <span>An error occurred during upload. Please try again.</span>
-
-    </div>
-
-
-
-    <!-- Existing Streams Table -->
-
-    <table class="table table-bordered table-striped">
-
-      <!-- Table content remains the same -->
-      <thead class="table-dark">
+            <!--Streams Table -->
+            <table class="table table-bordered table-striped">
+                <thead class="table-dark">
                     <tr>
                         <th>ID</th>
                         <th>Title</th>
@@ -254,602 +220,336 @@
                                 th:data-videolink="${video.videoLink}"
                                 th:data-thumbnailurl="${video.thumbnailUrl}"
                             >
-                            <i class="fa fa-edit"></i> Edit
+                                <i class="fa fa-edit"></i> Edit
                             </button>
                             <a th:href="@{/admin/delete-stream/{id}(id=${video.id})}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this video?');"> <i class="fa fa-trash"></i> Delete </a>
                         </td>
                     </tr>
                 </tbody>
+            </table>
 
-    </table>
-
-<div class="modal fade" id="editStreamModal" tabindex="-1" aria-labelledby="editStreamModalLabel" aria-hidden="true">
-		    <div class="modal-dialog">
-		        <div class="modal-content">
-		            <div class="modal-header">
-		                <h5 class="modal-title" id="editStreamModalLabel">Edit Stream</h5>
-		                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-		            </div>
-		            <div class="modal-body">
-		                <form th:action="@{/admin/update-stream}" method="post">
-		                    <input type="hidden" id="editId" name="id" />
-		                    <div class="mb-3">
-		                        <label for="editTitle" class="form-label">Title:</label>
-		                        <input type="text" id="editTitle" name="title" class="form-control" required />
-		                    </div>
-		                    <div class="mb-3">
-		                        <label for="editDescription" class="form-label">Description:</label>
-		                        <textarea id="editDescription" name="description" class="form-control" required></textarea>
-		                    </div>
-		                    <div class="mb-3">
-		                        <label for="editDirectorName" class="form-label">Director Name:</label>
-		                        <input type="text" id="editDirectorName" name="directorName" class="form-control" required />
-		                    </div>
-		                    <div class="mb-3">
-		                        <label for="editDuration" class="form-label">Duration:</label>
-		                        <input type="text" id="editDuration" name="duration" class="form-control" required />
-		                    </div>
-		                    <div class="mb-3">
-		                        <label for="editIMDBRating" class="form-label">IMDB Rating:</label>
-		                        <input type="text" id="editIMDBRating" name="IMDBRating" class="form-control" required />
-		                    </div>
-		                    <div class="mb-3">
-		                        <label for="editGenre" class="form-label">Genre:</label>
-		                        <select id="editGenre" name="genre" class="form-control" required>
-		                            <option value="HORROR">Horror</option>
-		                            <option value="ACTION">Action</option>
-		                            <option value="THRILLER">Thriller</option>
-		                            <option value="SCIENCE_FICTION">Science Fiction</option>
-		                            <option value="COMEDY">Comedy</option>
-		                            <option value="ROMANCE">Romance</option>
-		                            <option value="DOCUMENTARY">Documentary</option>
-		                        </select>
-		                    </div>
-		                    <div class="mb-3">
-		                        <label for="editType" class="form-label">Stream Type:</label>
-		                        <select id="editType" name="type" class="form-control" required>
-		                            <option value="MOVIE">Movie</option>
-		                            <option value="SERIES">Series</option>
-		                        </select>
-		                    </div>
-		                    <button type="submit" class="btn btn-primary">Update Stream</button>
-		                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-		                </form>
-		            </div>
-		        </div>
-		    </div>
-		</div>
-
-    <!-- Upload Forms -->
-
-    <div class="mt-5">
-
-      <ul class="nav nav-tabs" role="tablist">
-
-        <li class="nav-item">
-
-          <a class="nav-link active" data-bs-toggle="tab" href="#movieUpload">Upload Movie</a>
-
-        </li>
-
-        <li class="nav-item">
-
-          <a class="nav-link" data-bs-toggle="tab" href="#seriesUpload">Upload TV Series</a>
-
-        </li>
-
-      </ul>
-
-
-
-      <div class="tab-content mt-3">
-
-        <!-- Movie Upload Form -->
-
-        <div id="movieUpload" class="tab-pane fade show active">
-
-          <h3>Upload New Movie</h3>
-
-          <form th:action="@{/stream/upload}" method="post" enctype="multipart/form-data">
-
-            <!-- Existing movie form fields remain the same -->
-            <div class="mb-3">
-                    <label class="form-label">Title</label>
-                    <input type="text" name="title" class="form-control" required />
+            <div class="modal fade" id="editStreamModal" tabindex="-1" aria-labelledby="editStreamModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="editStreamModalLabel">Edit Stream</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form th:action="@{/admin/update-stream}" method="post">
+                                <input type="hidden" id="editId" name="id" />
+                                <div class="mb-3">
+                                    <label for="editTitle" class="form-label">Title:</label>
+                                    <input type="text" id="editTitle" name="title" class="form-control" required />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="editDescription" class="form-label">Description:</label>
+                                    <textarea id="editDescription" name="description" class="form-control" required></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="editDirectorName" class="form-label">Director Name:</label>
+                                    <input type="text" id="editDirectorName" name="directorName" class="form-control" required />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="editDuration" class="form-label">Duration:</label>
+                                    <input type="text" id="editDuration" name="duration" class="form-control" required />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="editIMDBRating" class="form-label">IMDB Rating:</label>
+                                    <input type="text" id="editIMDBRating" name="IMDBRating" class="form-control" required />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="editGenre" class="form-label">Genre:</label>
+                                    <select id="editGenre" name="genre" class="form-control" required>
+                                        <option value="HORROR">Horror</option>
+                                        <option value="ACTION">Action</option>
+                                        <option value="THRILLER">Thriller</option>
+                                        <option value="SCIENCE_FICTION">Science Fiction</option>
+                                        <option value="COMEDY">Comedy</option>
+                                        <option value="ROMANCE">Romance</option>
+                                        <option value="DOCUMENTARY">Documentary</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="editType" class="form-label">Stream Type:</label>
+                                    <select id="editType" name="type" class="form-control" required>
+                                        <option value="MOVIE">Movie</option>
+                                        <option value="SERIES">Series</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Update Stream</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Description</label>
-                    <textarea name="description" class="form-control" required></textarea>
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Director Name</label>
-                    <input type="text" name="directorName" class="form-control" required />
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Duration</label>
-                    <input type="text" name="duration" class="form-control" required />
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">IMDB Rating</label>
-                    <input type="text" name="IMDBRating" class="form-control" required />
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Genre</label>
-                    <select name="genre" class="form-control" required>
-                        <option value="HORROR">Horror</option>
-                        <option value="ACTION">Action</option>
-                        <option value="THRILLER">Thriller</option>
-                        <option value="SCIENCE_FICTION">Science Fiction</option>
-                        <option value="COMEDY">Comedy</option>
-                        <option value="ROMANCE">Romance</option>
-                        <option value="DOCUMENTARY">Documentary</option>
-                    </select>
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Stream Type</label>
-
-                    <select name="type" class="form-control" required>
-                        <option value="MOVIE">Movie</option>
-                        <option value="SERIES">Series</option>
-                    </select>
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Upload Video</label>
-                    <input type="file" name="file" class="form-control" accept="video/*" required />
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Upload Thumbnail</label>
-                    <input type="file" name="thumbnail" class="form-control" accept="image/*" required />
-                </div>
-
-                <button type="submit" class="btn btn-primary">Upload Video</button>
-
-          </form>
-
-        </div>
-
-
-
-        <!-- Series Upload Form -->
-
-   <!--       <div id="seriesUpload" class="tab-pane fade">
-
-          <h3>Upload New TV Series</h3>
-
-          <form th:action="@{/stream/upload-series}" method="post" enctype="multipart/form-data">
-
-             Series Details 
-
-            <div class="card mb-3">
-
-              <div class="card-header">Series Details</div>
-
-              <div class="card-body">
-
-                <div class="mb-3">
-
-                  <label class="form-label">Series Title</label>
-
-                  <input type="text" name="title" class="form-control" required />
-
-                </div>
-
-                <div class="mb-3">
-
-                  <label class="form-label">Series Description</label>
-
-                  <textarea name="description" class="form-control" required></textarea>
-
-                </div>
-
-                <div class="mb-3">
-
-                  <label class="form-label">Director Name</label>
-
-                  <input type="text" name="directorName" class="form-control" required />
-
-                </div>
-
-                <div class="mb-3">
-
-                  <label class="form-label">Series IMDB Rating</label>
-
-                  <input type="number" name="IMDBRating" class="form-control" min="1" max="10" required />
-
-                </div>
-
-                <div class="mb-3">
-
-                  <label class="form-label">Genre</label>
-
-                  <select name="genre" class="form-control" required>
-
-                    <option value="HORROR">Horror</option>
-
-                    <option value="ACTION">Action</option>
-
-                    <option value="THRILLER">Thriller</option>
-
-                    <option value="SCIENCE_FICTION">Science Fiction</option>
-
-                    <option value="COMEDY">Comedy</option>
-
-                    <option value="ROMANCE">Romance</option>
-
-                    <option value="DOCUMENTARY">Documentary</option>
-
-                  </select>
-
-                </div>
-
-                <div class="mb-3">
-
-                  <label class="form-label">Series Thumbnail</label>
-
-                  <input type="file" name="thumbnail" class="form-control" accept="image/*" required />
-
-                </div>
-
-              </div>
-
             </div>
 
+            <!-- Upload Forms -->
+
+            <div class="mt-5">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-bs-toggle="tab" href="#movieUpload">Upload Movie</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#seriesUpload">Upload TV Series</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content mt-3">
+                    <!-- Movie Upload Form -->
+
+                    <div id="movieUpload" class="tab-pane fade show active">
+                        <h3>Upload New Movie</h3>
+
+                        <form th:action="@{/stream/upload}" method="post" enctype="multipart/form-data">
+                            <div class="mb-3">
+                                <label class="form-label">Title</label>
+                                <input type="text" name="title" class="form-control" required />
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Description</label>
+                                <textarea name="description" class="form-control" required></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Director Name</label>
+                                <input type="text" name="directorName" class="form-control" required />
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Duration</label>
+                                <input type="text" name="duration" class="form-control" required />
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">IMDB Rating</label>
+                                <input type="text" name="IMDBRating" class="form-control" required />
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Genre</label>
+                                <select name="genre" class="form-control" required>
+                                    <option value="HORROR">Horror</option>
+                                    <option value="ACTION">Action</option>
+                                    <option value="THRILLER">Thriller</option>
+                                    <option value="SCIENCE_FICTION">Science Fiction</option>
+                                    <option value="COMEDY">Comedy</option>
+                                    <option value="ROMANCE">Romance</option>
+                                    <option value="DOCUMENTARY">Documentary</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Stream Type</label>
+
+                                <select name="type" class="form-control" required>
+                                    <option value="MOVIE">Movie</option>
+                                    <option value="SERIES">Series</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Upload Video</label>
+                                <input type="file" name="file" class="form-control" accept="video/*" required />
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Upload Thumbnail</label>
+                                <input type="file" name="thumbnail" class="form-control" accept="image/*" required />
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Upload Video</button>
+                        </form>
+                    </div>
 
 
-            <!-- Season Details -
+                    <div id="seriesUpload" class="tab-pane fade">
+                        <h3>Upload New TV Series</h3>
 
-            <div class="card mb-3">
+                        <form id="seriesUploadForm" th:action="@{/stream/upload-series}" method="post" enctype="multipart/form-data">
+                            <!-- Series Details -->
 
-              <div class="card-header">Season Details</div>
+                            <div class="card mb-3">
+                                <div class="card-header">Series Details</div>
 
-              <div class="card-body">
+                                <div class="card-body">
+                                    <div class="mb-3">
+                                        <label class="form-label">Series Title</label>
 
-                <div class="mb-3">
+                                        <input type="text" name="title" class="form-control" required />
+                                    </div>
 
-                  <label class="form-label">Season Number</label>
+                                    <div class="mb-3">
+                                        <label class="form-label">Series Description</label>
 
-                  <input type="number" name="seasonNumber" class="form-control" required />
+                                        <textarea name="description" class="form-control" required></textarea>
+                                    </div>
 
+                                    <div class="mb-3">
+                                        <label class="form-label">Director Name</label>
+
+                                        <input type="text" name="directorName" class="form-control" required />
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">Series IMDB Rating</label>
+
+                                        <input type="number" name="IMDBRating" class="form-control" min="1" max="10" required />
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">Genre</label>
+
+                                        <select name="genre" class="form-control" required>
+                                            <option value="HORROR">Horror</option>
+
+                                            <option value="ACTION">Action</option>
+
+                                            <option value="THRILLER">Thriller</option>
+
+                                            <option value="SCIENCE_FICTION">Science Fiction</option>
+
+                                            <option value="COMEDY">Comedy</option>
+
+                                            <option value="ROMANCE">Romance</option>
+
+                                            <option value="DOCUMENTARY">Documentary</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">Series Thumbnail</label>
+
+                                        <input type="file" name="thumbnail" class="form-control" accept="image/*" required />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Season Details -->
+
+                            <div class="card mb-3">
+                                <div class="card-header">Season Details</div>
+
+                                <div class="card-body">
+                                    <div class="mb-3">
+                                        <label class="form-label">Season Number</label>
+
+                                        <input type="number" name="seasonNumber" class="form-control" required />
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">Season Description</label>
+
+                                        <textarea name="seasonDescription" class="form-control" required></textarea>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">Season Thumbnail</label>
+
+                                        <input type="file" name="seasonThumbnail" class="form-control" accept="image/*" required />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Episodes -->
+
+                            <div class="card mb-3">
+                                <div class="card-header">
+                                    Episodes
+
+                                    <button type="button" class="btn btn-primary btn-sm float-end" id="addEpisodeBtn"><i class="fas fa-plus"></i> Add Episode</button>
+                                </div>
+
+                                <div class="card-body" id="episodesContainer">
+                                    <!-- Episode input fields will be added dynamically here -->
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Upload Series</button>
+                        </form>
+                    </div>
+
+                    <footer class="bg-dark text-center text-white py-3">
+                        <p>&copy; 2025 Streamix. All rights reserved.</p>
+                    </footer>
+
+                    <!-- Bootstrap and other scripts -->
+
+                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+                    <script>
+                        document.getElementById("addEpisodeBtn").addEventListener("click", function () {
+                            let episodeContainer = document.getElementById("episodesContainer");
+
+                            let episodeIndex = episodeContainer.children.length; // Count existing episodes
+
+                            let episodeHtml = `
+
+							<div class="episode-group border p-3 mb-3">
+					      		<h5>Episode ${episodeIndex + 1}</h5>
+								<div class="mb-3">
+					          		<label class="form-label">Episode Title</label>
+					         		<input type="text" name="episodeTitles" class="form-control" required />
+					        	</div>
+				
+					        	<div class="mb-3">
+					          		<label class="form-label">Episode Number</label>
+					          		<input type="number" name="episodeNumbers" class="form-control" required />
+					        	</div>
+				
+					        	<div class="mb-3">
+					          		<label class="form-label">Episode Description</label>
+					          		<textarea name="episodeDescriptions" class="form-control" required></textarea>
+					        	</div>
+				
+					        	<div class="mb-3">
+					          		<label class="form-label">Episode Duration (in minutes)</label>
+					          		<input type="number" name="episodeDurations" class="form-control" required />
+					        	</div>
+				
+					        	<div class="mb-3">
+					          		<label class="form-label">Episode IMDB Rating</label>
+					          		<input type="number" name="episodeIMDBRatings" class="form-control" min="1" max="10" required />
+					        	</div>
+				
+					        	<div class="mb-3">
+					          		<label class="form-label">Episode File</label>
+					          		<input type="file" name="episodeFiles" class="form-control" accept="video/*" required />
+					        	</div>
+				
+					      	</div>`;
+
+                            episodeContainer.insertAdjacentHTML("beforeend", episodeHtml);
+                        });
+
+                        document.addEventListener("DOMContentLoaded", function () {
+                            document.querySelectorAll(".editVideoBtn").forEach((button) => {
+                                button.addEventListener("click", function () {
+                                    let modalElement = document.getElementById("editStreamModal");
+                                    if (!modalElement) {
+                                        console.error("Edit modal not found!");
+                                        return;
+                                    }
+                                    let modal = new bootstrap.Modal(modalElement);
+                                    document.getElementById("editId").value = this.getAttribute("data-id");
+                                    document.getElementById("editTitle").value = this.getAttribute("data-title");
+                                    document.getElementById("editDescription").value = this.getAttribute("data-description");
+                                    document.getElementById("editDirectorName").value = this.getAttribute("data-directorname");
+                                    document.getElementById("editDuration").value = this.getAttribute("data-duration");
+                                    document.getElementById("editIMDBRating").value = this.getAttribute("data-imdbrating");
+                                    document.getElementById("editGenre").value = this.getAttribute("data-genre");
+                                    document.getElementById("editType").value = this.getAttribute("data-type");
+                                    modal.show();
+                                });
+                            });
+                        });
+                    </script>
                 </div>
-
-                <div class="mb-3">
-
-                  <label class="form-label">Season Description</label>
-
-                  <textarea name="seasonDescription" class="form-control" required></textarea>
-
-                </div>
-
-                <div class="mb-3">
-
-                  <label class="form-label">Season Thumbnail</label>
-
-                  <input type="file" name="seasonThumbnail" class="form-control" accept="image/*" required />
-
-                </div>
-
-              </div>
-
             </div>
-
-
-
-            <!-- Episodes -
-
-            <div class="card mb-3">
-
-              <div class="card-header">
-
-                Episodes
-
-                <button type="button" class="btn btn-primary btn-sm float-end" id="addEpisodeBtn">
-
-                  <i class="fas fa-plus"></i> Add Episode
-
-                </button>
-
-              </div>
-
-              <div class="card-body" id="episodesContainer">
-
-                <!-- Episode template will be added here dynamically -
-
-              </div>
-
-            </div>
-
-
-
-            <button type="submit" class="btn btn-primary">Upload Series</button>
-
-          </form>
-
         </div>
-
-      </div>
-
-    </div>
-
-  </div> -->
-
-<<div id="seriesUpload" class="tab-pane fade">
-
-  <h3>Upload New TV Series</h3>
-
-  <form id="seriesUploadForm" th:action="@{/stream/upload-series}" method="post" enctype="multipart/form-data">
-
-    
-
-    <!-- Series Details -->
-
-    <div class="card mb-3">
-
-      <div class="card-header">Series Details</div>
-
-      <div class="card-body">
-
-        <div class="mb-3">
-
-          <label class="form-label">Series Title</label>
-
-          <input type="text" name="title" class="form-control" required />
-
-        </div>
-
-        <div class="mb-3">
-
-          <label class="form-label">Series Description</label>
-
-          <textarea name="description" class="form-control" required></textarea>
-
-        </div>
-
-        <div class="mb-3">
-
-          <label class="form-label">Director Name</label>
-
-          <input type="text" name="directorName" class="form-control" required />
-
-        </div>
-
-        <div class="mb-3">
-
-          <label class="form-label">Series IMDB Rating</label>
-
-          <input type="number" name="IMDBRating" class="form-control" min="1" max="10" required />
-
-        </div>
-
-        <div class="mb-3">
-
-          <label class="form-label">Genre</label>
-
-          <select name="genre" class="form-control" required>
-
-            <option value="HORROR">Horror</option>
-
-            <option value="ACTION">Action</option>
-
-            <option value="THRILLER">Thriller</option>
-
-            <option value="SCIENCE_FICTION">Science Fiction</option>
-
-            <option value="COMEDY">Comedy</option>
-
-            <option value="ROMANCE">Romance</option>
-
-            <option value="DOCUMENTARY">Documentary</option>
-
-          </select>
-
-        </div>
-
-        <div class="mb-3">
-
-          <label class="form-label">Series Thumbnail</label>
-
-          <input type="file" name="thumbnail" class="form-control" accept="image/*" required />
-
-        </div>
-
-      </div>
-
-    </div>
-
-
-
-    <!-- Season Details -->
-
-    <div class="card mb-3">
-
-      <div class="card-header">Season Details</div>
-
-      <div class="card-body">
-
-        <div class="mb-3">
-
-          <label class="form-label">Season Number</label>
-
-          <input type="number" name="seasonNumber" class="form-control" required />
-
-        </div>
-
-        <div class="mb-3">
-
-          <label class="form-label">Season Description</label>
-
-          <textarea name="seasonDescription" class="form-control" required></textarea>
-
-        </div>
-
-        <div class="mb-3">
-
-          <label class="form-label">Season Thumbnail</label>
-
-          <input type="file" name="seasonThumbnail" class="form-control" accept="image/*" required />
-
-        </div>
-
-      </div>
-
-    </div>
-
-
-
-    <!-- Episodes -->
-
-    <div class="card mb-3">
-
-      <div class="card-header">
-
-        Episodes
-
-        <button type="button" class="btn btn-primary btn-sm float-end" id="addEpisodeBtn">
-
-          <i class="fas fa-plus"></i> Add Episode
-
-        </button>
-
-      </div>
-
-      <div class="card-body" id="episodesContainer">
-
-        <!-- Episode input fields will be added dynamically here -->
-
-      </div>
-
-    </div>
-
-
-
-    <button type="submit" class="btn btn-primary">Upload Series</button>
-
-  </form>
-
-</div>
-
-  <footer class="bg-dark text-center text-white py-3">
-
-    <p>&copy; 2025 Streamix. All rights reserved.</p>
-
-  </footer>
-
-
-
-  <!-- Bootstrap and other scripts -->
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-  <script>
-
-  document.getElementById("addEpisodeBtn").addEventListener("click", function () {
-
-	    let episodeContainer = document.getElementById("episodesContainer");
-
-
-
-	    let episodeIndex = episodeContainer.children.length; // Count existing episodes
-
-
-
-	    let episodeHtml = `
-
-	      <div class="episode-group border p-3 mb-3">
-
-	        <h5>Episode ${episodeIndex + 1}</h5>
-
-	        <div class="mb-3">
-
-	          <label class="form-label">Episode Title</label>
-
-	          <input type="text" name="episodeTitles" class="form-control" required />
-
-	        </div>
-
-	        <div class="mb-3">
-
-	          <label class="form-label">Episode Number</label>
-
-	          <input type="number" name="episodeNumbers" class="form-control" required />
-
-	        </div>
-
-	        <div class="mb-3">
-
-	          <label class="form-label">Episode Description</label>
-
-	          <textarea name="episodeDescriptions" class="form-control" required></textarea>
-
-	        </div>
-
-	        <div class="mb-3">
-
-	          <label class="form-label">Episode Duration (in minutes)</label>
-
-	          <input type="number" name="episodeDurations" class="form-control" required />
-
-	        </div>
-
-	        <div class="mb-3">
-
-	          <label class="form-label">Episode IMDB Rating</label>
-
-	          <input type="number" name="episodeIMDBRatings" class="form-control" min="1" max="10" required />
-
-	        </div>
-
-	        <div class="mb-3">
-
-	          <label class="form-label">Episode File</label>
-
-	          <input type="file" name="episodeFiles" class="form-control" accept="video/*" required />
-
-	        </div>
-
-	      </div>`;
-
-
-
-	    episodeContainer.insertAdjacentHTML("beforeend", episodeHtml);
-
-	  });
-    
-    document.addEventListener("DOMContentLoaded", function () {
- 		document.querySelectorAll(".editVideoBtn").forEach(button => {
-			button.addEventListener("click", function () {
-			let modalElement = document.getElementById("editStreamModal");
-			if (!modalElement) {
-				console.error("Edit modal not found!");
-				return;
-			}
-			let modal = new bootstrap.Modal(modalElement);
-			document.getElementById("editId").value = this.getAttribute("data-id");
-      		document.getElementById("editTitle").value = this.getAttribute("data-title");
-      		document.getElementById("editDescription").value = this.getAttribute("data-description");
-      		document.getElementById("editDirectorName").value = this.getAttribute("data-directorname");
-			document.getElementById("editDuration").value = this.getAttribute("data-duration");
-			document.getElementById("editIMDBRating").value = this.getAttribute("data-imdbrating");
-			document.getElementById("editGenre").value = this.getAttribute("data-genre");
-			document.getElementById("editType").value = this.getAttribute("data-type");
-			modal.show();
-	
-	    });
-	
-	  });
-	
-	});
-	
-
-  </script>
-
-</body>
-
+    </body>
 </html>

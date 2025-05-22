@@ -11,6 +11,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -29,6 +30,12 @@ public class VideoStreamService {
 
     @Autowired
     private VideoStreamRepository videoStreamRepository;
+    
+    @Value("${cloud.aws.region.static}")
+    private String region;
+    
+    @Value("${cloud.aws.s3.bucket.name}")
+    private String bucketName;
 
     public List<VideoStream> searchVideo(String keyword) {
         return videoStreamRepository.searchByKeyword(keyword);
@@ -45,9 +52,6 @@ public class VideoStreamService {
     public List<VideoStream> getAllMovies() {
         return videoStreamRepository.findByType(StreamType.MOVIE);
     }
-
-    private String bucketName = "streamixtvshowsmovies";
-    private String region = "us-east-1";
 
     public String uploadFile(MultipartFile file) {
         File fileObj = convertMultiPartFileToFile(file);

@@ -69,7 +69,7 @@ public class UserController {
    
     @GetMapping("/logout")
     String logout(HttpSession httpSession, Model model) {
-        System.out.println("httpSession --" + httpSession);
+//        System.out.println("httpSession --" + httpSession);
         if (httpSession != null) {
 //            System.out.print("Inside if");
             httpSession.invalidate();

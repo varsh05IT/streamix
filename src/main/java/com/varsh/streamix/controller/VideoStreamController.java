@@ -237,14 +237,6 @@ public class VideoStreamController {
     }
     
     
-    
-    
-    
-    
-    
-    
-    
-    
     @GetMapping("/tvshows")
     public String getTVShows(Model model) {
         List<VideoStream> series = videoStreamRepository.findByType(StreamType.SERIES);
